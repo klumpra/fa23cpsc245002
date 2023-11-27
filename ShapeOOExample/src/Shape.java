@@ -1,4 +1,4 @@
-public abstract class Shape {
+public abstract class Shape implements Comparable<Shape> {
     private Point location;  // ownership - Every shape owns an object of class Point
     public double getX() {
         return location.getX();    // delegation - software pattern where the owner asks the owned to do something
@@ -36,5 +36,20 @@ public abstract class Shape {
     @Override
     public String toString() {
         return String.format("%s\t%s",getType(),location.toString());  // delegation
+    }
+    public String toStringDetailed() {
+        return "The basics: " + toString() + "\tCalculated: " + String.format("Area = %.2f\tPerim = %.2f\tDistance = %.2f",getArea(),getPerim(),getDistanceFromOrigin());
+    }
+    @Override
+    public int compareTo(Shape other) {
+        double myDist = getDistanceFromOrigin();
+        double otherDist = other.getDistanceFromOrigin();
+        if (myDist < otherDist) {
+            return -1;
+        } else if (myDist == otherDist) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 }
