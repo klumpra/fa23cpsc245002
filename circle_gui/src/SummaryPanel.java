@@ -15,6 +15,7 @@ public class SummaryPanel extends JPanel {
         panNorth.add(lblSummary);
         add(panNorth,BorderLayout.NORTH);
         tarSummary = new JTextArea(10,30);
+        tarSummary.setEditable(false);
         add(tarSummary,BorderLayout.CENTER);
     }
     public SummaryPanel(ArrayList<Circle> circles) {
